@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Platform, Vibration } from 'react-native';
+import { Platform } from 'react-native';
 import { LongPressGestureHandler } from 'react-native-gesture-handler';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import Animated, {
@@ -142,7 +142,6 @@ export default function ChartPathGradientProvider({
 	springConfig = {},
 	timingFeedbackConfig = {},
 	timingAnimationConfig = {},
-	vibration,
 	...rest
 }) {
 	const valuesStore = useRef(null);
@@ -390,9 +389,6 @@ export default function ChartPathGradientProvider({
 			if (!currData.value || currData.value.length === 0) {
 				return;
 			}
-
-			if (vibration)
-				Vibration.vibrate(vibration);
 
 			const eventX = positionXWithMargin(
 				event.x,
