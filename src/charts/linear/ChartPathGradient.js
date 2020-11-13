@@ -575,7 +575,7 @@ function ChartPath({
 				res = toValue.map(({ x, y }) => {
 					return {
 						x: x * layoutSize.value.width,
-						y: (y * layoutSize.value.height) - 10,
+						y: (y * layoutSize.value.height),
 					};
 				});
 			}
@@ -626,8 +626,8 @@ function ChartPath({
 	const animatedProps = useAnimatedStyle(
 		() => {
 			var defaultpath = "M 0," + width;
-
 			var pathSVG = path.value == "" ? defaultpath : path.value;
+
 			const props = {
 				d: `${pathSVG}L ${width + 10} ${height + 40} L 0 ${height + 40}`,
 				strokeWidth:
@@ -668,7 +668,7 @@ function ChartPath({
 			{...{ onGestureEvent: onLongPressGestureEvent }}
 		>
 			<Animated.View>
-				<Svg height={height + 40} // temporary fix for clipped chart
+				<Svg height={height + 20} // temporary fix for clipped chart
 					viewBox={`0 0 ${width} ${height}`}
 					width={width}>
 					<Defs>
