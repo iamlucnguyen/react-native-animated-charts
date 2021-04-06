@@ -658,6 +658,8 @@ function ChartPath({
 				props,
 				style,
 				width,
+				gradientColor,
+				gradientOffset
 			}}
 		>
 			{__disableRendering ? children : <SvgComponent />}
@@ -676,6 +678,8 @@ export function SvgComponent() {
 		onLongPressGestureEvent,
 		gestureEnabled,
 		longPressGestureHandlerProps,
+		gradientColor,
+		gradientOffset
 	} = useContext(InternalContext);
 	return (
 		<LongPressGestureHandler
