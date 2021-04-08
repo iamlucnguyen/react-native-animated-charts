@@ -488,7 +488,6 @@ function ChartPath({
 	height,
 	width,
 	gradientColor,
-	gradientOffset,
 	longPressGestureHandlerProps,
 	selectedStrokeWidth = 1,
 	strokeWidth = 1,
@@ -658,8 +657,7 @@ function ChartPath({
 				props,
 				style,
 				width,
-				gradientColor,
-				gradientOffset
+				gradientColor
 			}}
 		>
 			{__disableRendering ? children : <SvgComponent />}
@@ -678,8 +676,7 @@ export function SvgComponent() {
 		onLongPressGestureEvent,
 		gestureEnabled,
 		longPressGestureHandlerProps,
-		gradientColor,
-		gradientOffset
+		gradientColor
 	} = useContext(InternalContext);
 	return (
 		<LongPressGestureHandler
@@ -692,13 +689,23 @@ export function SvgComponent() {
 		>
 			<Animated.View>
 				<Svg height={height + 20} // temporary fix for clipped chart	
-					viewBox={`0 0 ${width} ${height}`}
-					width={width}>
+					viewBox={`0 0 ${width - 1} ${height}`}
+					width={width}
+					fillOpacity={0.6}
+				>
 					<Defs>
 						<LinearGradient id="gradient" x1="50%" y1="0%" x2="50%" y2="100%">
-							<Stop offset={gradientOffset[0]} stopColor={gradientColor[0]} />
-							<Stop offset={gradientOffset[1]} stopColor={gradientColor[1]} />
-							<Stop offset={gradientOffset[2]} stopColor={gradientColor[2]} />
+							<Stop offset="0%" stopColor={gradientColor} stopOpacity={0.5} />
+							<Stop offset="10%" stopColor={gradientColor} stopOpacity={0.5} />
+							<Stop offset="20%" stopColor={gradientColor} stopOpacity={0.4} />
+							<Stop offset="30%" stopColor={gradientColor} stopOpacity={0.3} />
+							<Stop offset="40%" stopColor={gradientColor} stopOpacity={0.2} />
+							<Stop offset="50%" stopColor={gradientColor} stopOpacity={0.15} />
+							<Stop offset="60%" stopColor={gradientColor} stopOpacity={0.1} />
+							<Stop offset="70%" stopColor={gradientColor} stopOpacity={0.05} />
+							<Stop offset="80%" stopColor={gradientColor} stopOpacity={0} />
+							<Stop offset="90%" stopColor={gradientColor} stopOpacity={0} />
+							<Stop offset="100%" stopColor={gradientColor} stopOpacity={0} />
 						</LinearGradient>
 					</Defs>
 					<AnimatedPath
