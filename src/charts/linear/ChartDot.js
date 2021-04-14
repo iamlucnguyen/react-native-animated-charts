@@ -23,7 +23,7 @@ function ChartDot({ style, size = 10, indicator = false, indicatorColor = ["#000
 					<LinearGradient
 						colors={indicatorColor}
 						style={{
-							height: "95%", width: "100%"
+							height: "100%", width: "100%"
 						}}
 					/>
 				</Animated.View>
